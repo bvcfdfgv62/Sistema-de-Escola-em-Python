@@ -51,5 +51,12 @@ Este é um sistema moderno de gestão escolar desenvolvido com **Flask**. O proj
 
 Este repositório contém apenas a versão **Web App**. A interface desktop (GUI) foi mantida localmente conforme a configuração de desenvolvimento.
 
+## 🤝 Contribuidores
+
+Um agradecimento especial àqueles que ajudaram no desenvolvimento deste projeto:
+
+- **Evaristo_B_Araujo**
+- **falcaozitos3-rgb**
+
 ---
 Desenvolvido por [kaian](https://github.com/bvcfdfgv62)
