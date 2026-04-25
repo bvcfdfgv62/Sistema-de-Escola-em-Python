@@ -56,7 +56,6 @@ Este repositório contém apenas a versão **Web App**. A interface desktop (GUI
 Um agradecimento especial àqueles que ajudaram no desenvolvimento deste projeto:
 
 - **Evaristo_B_Araujo**
-- **falcaozitos3-rgb**
 
 ---
 Desenvolvido por [kaian](https://github.com/bvcfdfgv62)
