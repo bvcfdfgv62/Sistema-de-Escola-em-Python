@@ -1,0 +1,7 @@
+gui_premium.py
+escola.db
+.venv/
+__pycache__/
+*.log
+.vscode/
+*.pyc

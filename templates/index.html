@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TriadCode | Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="triad-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="brand">TriadCode</div>
+            
+            <nav class="menu">
+                <button class="menu-item active" data-view="dashboard">🏠 Dashboard</button>
+                <button class="menu-item" data-view="alunos">👨‍🎓 Alunos</button>
+                <button class="menu-item" disabled style="opacity: 0.4;">📊 Relatórios</button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="avatar-mini">{{ user[0].upper() }}</div>
+                <div style="flex: 1;">
+                    <div style="font-size: 0.8rem; font-weight: 700;">{{ user }}</div>
+                    <div style="font-size: 0.7rem; color: var(--sidebar-text);">Administrador</div>
+                </div>
+                <a href="{{ url_for('auth.logout') }}" style="text-decoration: none; font-size: 1rem;">🚪</a>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main-content">
+            <header class="page-header">
+                <div>
+                    <h1 id="pageTitle">Dashboard</h1>
+                    <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 4px;">Gerencie o progresso acadêmico em tempo real.</p>
+                </div>
+                <button id="btnAddAluno" class="btn-primary">+ Novo Aluno</button>
+            </header>
+
+            <!-- VIEW: DASHBOARD -->
+            <section id="viewDashboard" class="view">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="label">Total Alunos</div>
+                        <div class="value" id="statTotal">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">Média Geral</div>
+                        <div class="value" id="statMedia">0.0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">Aprovados</div>
+                        <div class="value" id="statAprovados">0</div>
+                    </div>
+                </div>
+
+                <div class="data-table-container">
+                    <div class="table-header">Atividade Recente</div>
+                    <div id="recentList"></div>
+                </div>
+            </section>
+
+            <!-- VIEW: ALUNOS -->
+            <section id="viewAlunos" class="view" style="display: none;">
+                <div class="data-table-container">
+                    <div class="table-header">Todos os Alunos</div>
+                    <div id="fullList"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- MODAIS -->
+    <div id="modalAdd" class="modal-overlay">
+        <div class="modal-box">
+            <h2>Novo Aluno</h2>
+            <div style="margin-top: 24px;">
+                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim);">NOME COMPLETO</label>
+                <input type="text" id="inputNome" class="input-field" placeholder="Ex: Lucas Silva">
+            </div>
+            <div style="display: flex; gap: 12px; margin-top: 32px; justify-content: flex-end;">
+                <button class="btn-ghost" id="btnCloseAdd">Cancelar</button>
+                <button class="btn-primary" id="btnSaveAluno">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalNota" class="modal-overlay">
+        <div class="modal-box">
+            <h2>Lançar Nota</h2>
+            <p id="notaTargetNome" style="color: var(--text-dim); margin-top: 8px; font-size: 0.9rem;"></p>
+            <div style="margin-top: 24px;">
+                <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim);">VALOR (0 - 10)</label>
+                <input type="number" id="inputNota" class="input-field" step="0.1">
+            </div>
+            <div style="display: flex; gap: 12px; margin-top: 32px; justify-content: flex-end;">
+                <button class="btn-ghost" id="btnCloseNota">Cancelar</button>
+                <button class="btn-primary" id="btnSaveNota">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
